@@ -1,0 +1,101 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+        self.prev = None
+
+class SinglyLinkedList:
+
+    def __init__(self):
+        self.head = None
+        
+    def traverse(self, node):
+        while node:
+            print(node.data, end= " ")
+            if node.next:
+              print(" -> ", end = " ")
+            node=node.next
+            
+first_node = Node("Marga")
+second_node = Node("Yana")
+third_node = Node("Chleo")
+fourth_node = Node("Bea")
+fifth_node = Node("Mary")
+            
+first_node.next = second_node
+second_node.next = third_node
+third_node.next = fourth_node
+fourth_node.next = fifth_node
+
+print("SINGLY LIST: ")
+singly_list = SinglyLinkedList()
+singly_list.head = first_node
+
+singly_list.traverse(singly_list.head)
+
+
+#DOUBLY
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def traverse_forward(self):
+        current = self.head
+        while current:
+            print(current.data, end= "")
+            if current.next:
+              print(" -> ", end = "")
+            current = current.next
+
+    def traverse_backward(self):
+        current = self.tail
+        while current:
+            print(current.data, end= "")
+            if current.prev:
+              print(" -> ", end = "")
+            current = current.prev
+            
+#additional for doubly backward        
+second_node.prev = first_node
+third_node.prev = second_node
+fourth_node.prev = third_node
+fifth_node.prev = fourth_node
+
+doubly_list = DoublyLinkedList()
+doubly_list.head = first_node
+doubly_list.tail = fifth_node
+
+print("\nDOUBLY TRAVERSE FORWARD:")
+doubly_list.traverse_forward()
+
+
+print("\nDOUBLY TRAVERSE BACKWARD:")
+doubly_list.traverse_backward()
+print("\nCIRCULAR LIST:")
+
+
+#CIRCULAR PART
+class CircularLinkedList:
+    def __init__(self):
+        self.head = None
+
+    def traverse(self):
+        if not self.head:
+            return
+
+        current = self.head
+        while True:
+            print(current.data, end=" -> ")
+            current = current.next
+            if current == self.head:
+              print(current.data)
+              break
+
+# additional node, not found above
+fifth_node.next = first_node
+
+circular_list = CircularLinkedList()
+circular_list.head = first_node
+
+circular_list.traverse()
